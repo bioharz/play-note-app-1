@@ -43,4 +43,9 @@ public class HomeController extends Controller {
         return redirect("/");
     }
 
+    public Result delete(int id){
+        noteRepository.delete(id);
+        return redirect("/");
+    }
+
 }
