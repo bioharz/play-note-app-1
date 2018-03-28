@@ -44,7 +44,7 @@ public class InMemoryNoteRepository {
     }
 
     public void delete(int id) {
-        notes.remove(id);
+        notes.remove(String.valueOf(1));
     }
 
 }

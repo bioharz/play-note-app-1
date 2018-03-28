@@ -1,5 +1,6 @@
 package controllers;
 
+import com.sun.media.jfxmedia.logging.Logger;
 import models.Note;
 import play.data.Form;
 import play.data.FormFactory;
@@ -39,13 +40,28 @@ public class HomeController extends Controller {
 
     public Result save() {
         Note newNote = noteForm.bindFromRequest().get();
-        noteRepository.saveNote(newNote);
-        return redirect("/");
+
+        if (noteForm.hasErrors()) {
+            return badRequest(views.html.form.render(noteForm));
+        } else {
+
+            noteRepository.saveNote(newNote);
+            return redirect("/");
+        }
     }
 
-    public Result delete(int id){
-        noteRepository.delete(id);
-        return redirect("/");
+    public Result delete(int id) {
+
+        try {
+            play.Logger.info("try to delete id: " + id, id);
+            noteRepository.delete(id);
+
+
+        } catch (Throwable t) {
+            play.Logger.error("can't delte item, error:", t);
+        }
+
+        return redirect("/#");
     }
 
 }

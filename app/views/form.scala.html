@@ -22,7 +22,7 @@
 
         <div class="form-group">
             <label for="form-note">Note</label>
-            <textarea name="description" id="form-note" class="form-control">@note.getDescription()</textarea>
+            <textarea name="description" data-action="form-note" class="form-control">@note.getDescription()</textarea>
         </div>
 
         @helper.CSRF.formField
