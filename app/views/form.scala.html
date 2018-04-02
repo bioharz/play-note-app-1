@@ -1,4 +1,4 @@
-@(form:Form[Note])
+@(form:Form[Note], categories: List[Category])
 
 @main("Note form") {
 
@@ -35,6 +35,15 @@
                 @currentError.message()
                 </div>
             }
+        </div>
+
+        <div class="form-group">
+            <label for="form-category">Category</label>
+            <select name="category" class="custom-select">
+                @for(category <- categories) {
+                    <option value="@category" class="form-control" id="form-category" >@category.getTitle</option>
+                }
+            </select>
         </div>
 
         @helper.CSRF.formField
