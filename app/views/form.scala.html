@@ -39,9 +39,9 @@
 
         <div class="form-group">
             <label for="form-category">Category</label>
-            <select name="category" class="custom-select">
+            <select name="category.id" class="form-control">
                 @for(category <- categories) {
-                    <option value="@category" class="form-control" id="form-category" >@category.getTitle</option>
+                    <option value="@category.getId()">@category.getTitle</option>
                 }
             </select>
         </div>
